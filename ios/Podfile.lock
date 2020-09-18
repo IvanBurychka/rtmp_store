@@ -1,0 +1,51 @@
+PODS:
+  - camera_with_rtmp (0.0.1):
+    - Flutter
+    - HaishinKit (~> 1.0.10)
+  - Flutter (1.0.0)
+  - HaishinKit (1.0.12):
+    - Logboard (~> 2.1.3)
+  - Logboard (2.1.3)
+  - path_provider (0.0.1):
+    - Flutter
+  - video_player (0.0.1):
+    - Flutter
+  - wakelock (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - camera_with_rtmp (from `.symlinks/plugins/camera_with_rtmp/ios`)
+  - Flutter (from `Flutter`)
+  - path_provider (from `.symlinks/plugins/path_provider/ios`)
+  - video_player (from `.symlinks/plugins/video_player/ios`)
+  - wakelock (from `.symlinks/plugins/wakelock/ios`)
+
+SPEC REPOS:
+  trunk:
+    - HaishinKit
+    - Logboard
+
+EXTERNAL SOURCES:
+  camera_with_rtmp:
+    :path: ".symlinks/plugins/camera_with_rtmp/ios"
+  Flutter:
+    :path: Flutter
+  path_provider:
+    :path: ".symlinks/plugins/path_provider/ios"
+  video_player:
+    :path: ".symlinks/plugins/video_player/ios"
+  wakelock:
+    :path: ".symlinks/plugins/wakelock/ios"
+
+SPEC CHECKSUMS:
+  camera_with_rtmp: 606d566f89a21f1fed15ffda99cb247304beccd4
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  HaishinKit: e3e51052833cb7e39e67beebbc74822649a7dcae
+  Logboard: e74ec2d9941abd22f4db3a3ddcd0735011df92c7
+  path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
+  video_player: 9cc823b1d9da7e8427ee591e8438bfbcde500e6e
+  wakelock: 0d4a70faf8950410735e3f61fb15d517c8a6efc4
+
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+
+COCOAPODS: 1.9.3
