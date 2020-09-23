@@ -279,21 +279,48 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
     if (cameras.isEmpty) {
       return const Text('No camera found');
     } else {
-      for (CameraDescription cameraDescription in cameras) {
-        toggles.add(
-          SizedBox(
-            width: 90.0,
-            child: RadioListTile<CameraDescription>(
-              title: Icon(getCameraLensIcon(cameraDescription.lensDirection)),
-              groupValue: controller?.description,
-              value: cameraDescription,
-              onChanged: controller != null && controller.value.isRecordingVideo
-                  ? null
-                  : onNewCameraSelected,
-            ),
+      toggles.add(
+        SizedBox(
+          width: 90.0,
+          child: RadioListTile<CameraDescription>(
+            title: Icon(getCameraLensIcon(cameras[0].lensDirection)),
+            groupValue: controller?.description,
+            value: cameras[0],
+            onChanged: controller != null && controller.value.isRecordingVideo
+                ? null
+                : onNewCameraSelected,
           ),
-        );
-      }
+        ),
+      );
+      toggles.add(
+        SizedBox(
+          width: 90.0,
+          child: RadioListTile<CameraDescription>(
+            title: Icon(getCameraLensIcon(cameras[1].lensDirection)),
+            groupValue: controller?.description,
+            value: cameras[1],
+            onChanged: controller != null && controller.value.isRecordingVideo
+                ? null
+                : onNewCameraSelected,
+          ),
+        ),
+      );
+
+      // for (CameraDescription cameraDescription in cameras) {
+      //   toggles.add(
+      //     SizedBox(
+      //       width: 90.0,
+      //       child: RadioListTile<CameraDescription>(
+      //         title: Icon(getCameraLensIcon(cameraDescription.lensDirection)),
+      //         groupValue: controller?.description,
+      //         value: cameraDescription,
+      //         onChanged: controller != null && controller.value.isRecordingVideo
+      //             ? null
+      //             : onNewCameraSelected,
+      //       ),
+      //     ),
+      //   );
+      // }
     }
 
     return Row(children: toggles);
@@ -386,7 +413,6 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
     } else {
       stopVideoRecording().then((_) {
         if (mounted) setState(() {});
-        print(videoPath);
         showInSnackBar('Video recorded to: $videoPath');
       });
     }
@@ -429,8 +455,6 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
   }
 
   Future<String> startVideoRecording() async {
-    // _startVideoPlayer1();
-    // return 'ds';
     if (!controller.value.isInitialized) {
       showInSnackBar('Error: select a camera first.');
       return null;
@@ -643,37 +667,9 @@ class _CameraExampleHomeState extends State<CameraExampleHome>
     }
   }
 
-  Future<void> _startVideoPlayer1() async {
-
-    var videoPath1 = '/var/mobile/Containers/Data/Application/5BE23BA9-10BE-4888-BA09-385A866E9715/Documents/Movies/flutter_test/1600415675948.mp4';
-    final VideoPlayerController vcontroller =
-    VideoPlayerController.file(File(videoPath1));
-
-    videoPlayerListener = () {
-      if (videoController != null && videoController.value.size != null) {
-        // Refreshing the state to update video player with the correct ratio.
-        if (mounted) setState(() {});
-        videoController.removeListener(videoPlayerListener);
-      }
-    };
-    vcontroller.addListener(videoPlayerListener);
-    await vcontroller.setLooping(true);
-    await vcontroller.initialize();
-    await videoController?.dispose();
-    if (mounted) {
-      setState(() {
-        imagePath = null;
-        videoController = vcontroller;
-      });
-    }
-    await vcontroller.play();
-  }
-
   Future<void> _startVideoPlayer() async {
-    print(videoPath);
     final VideoPlayerController vcontroller =
-        VideoPlayerController.file(File(videoPath));
-
+    VideoPlayerController.file(File(videoPath));
     videoPlayerListener = () {
       if (videoController != null && videoController.value.size != null) {
         // Refreshing the state to update video player with the correct ratio.
